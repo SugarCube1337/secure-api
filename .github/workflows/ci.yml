@@ -38,7 +38,7 @@ jobs:
       - name: Run Pip-Audit (SCA) - Dependency Auditing
         run: |
           pip install pip-audit
-          pip-audit --save-html > pip_audit_report.html
+          pip-audit --format json > pip_audit_report.json
 
       - name: Upload Security Reports as Artifacts
         uses: actions/upload-artifact@v4
@@ -47,4 +47,4 @@ jobs:
           path: |
             bandit_report.html
             safety_report.html
-            pip_audit_report.html
+            pip_audit_report.json
