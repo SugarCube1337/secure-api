@@ -28,12 +28,12 @@ jobs:
       - name: Run Bandit (SAST) - Code Analysis
         run: |
           pip install bandit
-          bandit -r app/ -f json -o bandit_report.json
+          bandit -r app/ -f html -o bandit_report.html
 
       - name: Run Safety (SAST) - Dependency Checking
         run: |
           pip install safety
-          safety check --full-report --output safety_report.json
+          safety check --full-report --save-html safety_report.html
 
       - name: Run Pip-Audit (SCA) - Dependency Auditing
         run: |
@@ -45,6 +45,6 @@ jobs:
         with:
           name: security-reports
           path: |
-            bandit_report.json
-            safety_report.json
+            bandit_report.html
+            safety_report.html
             pip_audit_report.json
