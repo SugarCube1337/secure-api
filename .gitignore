@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+instance/
+*.sqlite3
+*.db
+*.sqlite
+.env.local
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+/httpRequests/
