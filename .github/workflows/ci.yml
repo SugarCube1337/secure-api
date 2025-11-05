@@ -33,7 +33,7 @@ jobs:
       - name: Run Safety (SAST) - Dependency Checking
         run: |
           pip install safety
-          safety check --full-report --output safety_report.json
+          safety check --full-report --output json
 
       - name: Run Pip-Audit (SCA) - Dependency Auditing
         run: |
