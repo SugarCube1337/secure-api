@@ -28,14 +28,23 @@ jobs:
       - name: Run Bandit (SAST) - Code Analysis
         run: |
           pip install bandit
-          bandit -r app/  
+          bandit -r app/ -f json -o bandit_report.json
 
       - name: Run Safety (SAST) - Dependency Checking
         run: |
           pip install safety
-          safety check --full-report 
+          safety check --full-report -f json > safety_report.json
 
       - name: Run Pip-Audit (SCA) - Dependency Auditing
         run: |
           pip install pip-audit
-          pip-audit --exit-code 1  
+          pip-audit --format json > pip_audit_report.json
+
+      - name: Upload Security Reports as Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: security-reports
+          path: |
+            bandit_report.json
+            safety_report.json
+            pip_audit_report.json
