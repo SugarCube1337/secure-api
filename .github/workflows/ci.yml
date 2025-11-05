@@ -41,7 +41,7 @@ jobs:
           pip-audit --format json > pip_audit_report.json
 
       - name: Upload Security Reports as Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: security-reports
           path: |
